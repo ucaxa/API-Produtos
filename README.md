@@ -6,14 +6,20 @@
 Para rodar o projeto é bastante simples:
 
 - [x] Para testar o projeto é necesssário apenas subir a aplicação, o esquema de banco de dados será criado de forma automática
-- [x] Testar a aplicação com alguma ferramenta para realizar as requisições.
+- [x] Seguem os passos para a execução da aplicação
+      -execute a classe ProdutosApplication.
+      -execute as reuisições via swagger no navegador acessando o endereço http://localhost:8080/swagger-ui/index.html#/
+      -para acessar o banco de dados utilize o navegador e use o endereço http://localhost:8080/h2-console
 
 
-## 💻 Tecnologias
+## 💻 Tecnologias e padrões
 
 - [x] Java 21
 - [ ] Spring Boot
-- [ ] Banco de dados MySQL
+- [ ] Junit e Mockito
+- [ ] Padrão de Projeto Factory
+- [ ] SWAGGER
+- [ ] H2
 
 .
 
