@@ -1,6 +1,6 @@
-package com.appProdutos.produtos.model.produto;
+package com.appProdutos.produtos.dto;
 
-import com.appProdutos.produtos.datasource.entity.Produto;
+import com.appProdutos.produtos.model.Produto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;

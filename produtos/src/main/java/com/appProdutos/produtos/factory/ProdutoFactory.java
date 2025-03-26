@@ -1,8 +1,7 @@
-package com.appProdutos.produtos.model.factory;
+package com.appProdutos.produtos.factory;
 
-import com.appProdutos.produtos.datasource.entity.Produto;
-import com.appProdutos.produtos.model.produto.ProdutoDetalhamentoDto;
-import com.appProdutos.produtos.model.produto.ProdutoDto;
+import com.appProdutos.produtos.model.Produto;
+import com.appProdutos.produtos.dto.ProdutoDto;
 import lombok.NoArgsConstructor;
 
 import static lombok.AccessLevel.PRIVATE;

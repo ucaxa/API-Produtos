@@ -1,9 +1,10 @@
 package com.appProdutos.produtos.service.impl;
 
-import com.appProdutos.produtos.datasource.repository.ProdutoRepository;
-import com.appProdutos.produtos.model.factory.ProdutoFactory;
-import com.appProdutos.produtos.model.produto.ProdutoDetalhamentoDto;
-import com.appProdutos.produtos.model.produto.ProdutoDto;
+import com.appProdutos.produtos.repository.ProdutoRepository;
+import com.appProdutos.produtos.factory.ProdutoFactory;
+import com.appProdutos.produtos.dto.ProdutoAtualizacaoDto;
+import com.appProdutos.produtos.dto.ProdutoDetalhamentoDto;
+import com.appProdutos.produtos.dto.ProdutoDto;
 import com.appProdutos.produtos.service.ProdutoService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
@@ -27,7 +28,7 @@ public class ProdutoServiceImpl implements ProdutoService {
 
     @Override
     @Transactional
-    public ProdutoDetalhamentoDto atualizar(Long id, ProdutoDetalhamentoDto dto) {
+    public ProdutoAtualizacaoDto atualizar(Long id, ProdutoAtualizacaoDto dto) {
 
         var  produto = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
@@ -44,7 +45,7 @@ public class ProdutoServiceImpl implements ProdutoService {
         if (dto.quantidadeEstoque()!=null){
             produto.setQuantidadeEstoque(dto.quantidadeEstoque());
         }
-        return new ProdutoDetalhamentoDto(produto);
+        return new ProdutoAtualizacaoDto(produto);
     }
 
     @Override

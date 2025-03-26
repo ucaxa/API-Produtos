@@ -1,8 +1,9 @@
 package com.appProdutos.produtos.service;
 
-import com.appProdutos.produtos.datasource.entity.Produto;
-import com.appProdutos.produtos.datasource.repository.ProdutoRepository;
-import com.appProdutos.produtos.model.produto.ProdutoDetalhamentoDto;
+import com.appProdutos.produtos.model.Produto;
+import com.appProdutos.produtos.repository.ProdutoRepository;
+import com.appProdutos.produtos.dto.ProdutoAtualizacaoDto;
+import com.appProdutos.produtos.dto.ProdutoDetalhamentoDto;
 import com.appProdutos.produtos.service.impl.ProdutoServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -12,7 +13,7 @@ import org.mockito.Mock;
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 import org.mockito.MockitoAnnotations;
-import com.appProdutos.produtos.model.produto.ProdutoDto;
+import com.appProdutos.produtos.dto.ProdutoDto;
 import java.math.BigDecimal;
 import java.util.Optional;
 
@@ -60,14 +61,14 @@ class ProdutoServiceTest {
         produtoExistente.setPreco(BigDecimal.valueOf(150.0));
         produtoExistente.setQuantidadeEstoque(5);
 
-        ProdutoDetalhamentoDto  produtoDetalhamentoDto = new ProdutoDetalhamentoDto(produtoExistente);
+        ProdutoAtualizacaoDto  produtoAtualizacaoDto = new ProdutoAtualizacaoDto(produtoExistente);
         when(produtoRepository.findById(1L)).thenReturn(Optional.of(produtoExistente));
         when(produtoRepository.save(any(Produto.class))).thenReturn(produtoExistente);
 
-        ProdutoDetalhamentoDto produtoAtualizado = produtoService.atualizar(1L, produtoDetalhamentoDto);
+        ProdutoAtualizacaoDto produtoAtualizado = produtoService.atualizar(1L, produtoAtualizacaoDto);
         assertNotNull(produtoAtualizado);
-        assertEquals(produtoDetalhamentoDto.nome(), produtoAtualizado.nome());
-        assertEquals(produtoDetalhamentoDto.descricao(), produtoAtualizado.descricao());
+        assertEquals(produtoAtualizacaoDto.nome(), produtoAtualizado.nome());
+        assertEquals(produtoAtualizacaoDto.descricao(), produtoAtualizado.descricao());
         assertEquals(BigDecimal.valueOf(150.0), produtoAtualizado.preco());
         assertEquals(5, produtoAtualizado.quantidadeEstoque());
 

@@ -1,7 +1,8 @@
 package com.appProdutos.produtos.controller;
 
-import com.appProdutos.produtos.model.produto.ProdutoDetalhamentoDto;
-import com.appProdutos.produtos.model.produto.ProdutoDto;
+import com.appProdutos.produtos.dto.ProdutoAtualizacaoDto;
+import com.appProdutos.produtos.dto.ProdutoDetalhamentoDto;
+import com.appProdutos.produtos.dto.ProdutoDto;
 import com.appProdutos.produtos.service.ProdutoService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -30,7 +31,8 @@ public class ProdutoController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<ProdutoDetalhamentoDto>> listarTodos(@PageableDefault Pageable paginacao) {
+    public ResponseEntity<Page<ProdutoDetalhamentoDto>> listarTodos(@PageableDefault(size=10,sort={"nome"})
+             Pageable paginacao) {
         Page<ProdutoDetalhamentoDto> produtos = service.listarTodos(paginacao);
         return ResponseEntity.ok(produtos);
     }
@@ -48,9 +50,9 @@ public class ProdutoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ProdutoDetalhamentoDto> atualizar(@PathVariable @NotNull Long id, @RequestBody @Valid ProdutoDetalhamentoDto dto) {
-        var produtoDetalhamentoDtoDto = service.atualizar(id, dto);
-        return ResponseEntity.ok(produtoDetalhamentoDtoDto);
+    public ResponseEntity<ProdutoAtualizacaoDto> atualizar(@PathVariable @NotNull Long id, @RequestBody @Valid ProdutoAtualizacaoDto dto) {
+        var produtoAtualizacaoDto = service.atualizar(id, dto);
+        return ResponseEntity.ok(produtoAtualizacaoDto);
     }
 
     @DeleteMapping("/{id}")

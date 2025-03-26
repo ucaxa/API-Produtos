@@ -1,4 +1,4 @@
-package com.appProdutos.produtos.datasource.entity;
+package com.appProdutos.produtos.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -17,13 +17,18 @@ public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column
+
+    @Column(name = "nome", nullable = false, length = 255)
     private String nome;
-    @Column
+
+    @Column(name = "descricao", nullable = false, length = 255)
     private String descricao;
-    @Column
+
+    @Column(name = "preco", nullable = false, precision = 38, scale = 2)
     private BigDecimal preco;
-    @Column
+
+    @Column(name = "quantidade_estoque", nullable = false)
     private Integer quantidadeEstoque;
+
 
 }

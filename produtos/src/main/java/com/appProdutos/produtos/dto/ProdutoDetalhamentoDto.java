@@ -1,6 +1,6 @@
-package com.appProdutos.produtos.model.produto;
+package com.appProdutos.produtos.dto;
 
-import com.appProdutos.produtos.datasource.entity.Produto;
+import com.appProdutos.produtos.model.Produto;
 
 import java.math.BigDecimal;
 

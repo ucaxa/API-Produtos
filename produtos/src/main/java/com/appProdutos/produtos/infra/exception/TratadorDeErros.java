@@ -33,11 +33,6 @@ public class TratadorDeErros {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro: " +ex.getLocalizedMessage());
     }
 
-    @ExceptionHandler(ValidacaoException.class)
-    public ResponseEntity tratarErroRegradeNegocio(ValidacaoException ex) {
-        return ResponseEntity.badRequest().body(ex.getMessage());
-    }
-
     private record DadosErrosValidacao(String campo, String mensagem){
         DadosErrosValidacao(FieldError field){
             this(field.getField(), field.getDefaultMessage());
